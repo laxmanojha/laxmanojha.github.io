@@ -1,0 +1,11 @@
+.text-center{
+    text-align: center;
+}
+
+input{
+    height: 100px;
+    width: 373px;
+    font-size: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
