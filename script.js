@@ -12,8 +12,21 @@ let buttons = document.querySelectorAll('.btn');
 Array.from(buttons).forEach((button) => {
     button.addEventListener('click', (e) => {
         if (e.target.innerHTML == "=") {
-            string = eval(string);
-            document.querySelector('.input').value = string;
+            try{
+                string = eval(string);
+                document.querySelector('.input').value = string;
+            }
+            catch(e)
+            {
+                string = "";
+                let msg = "           Invalid input!";
+                setTimeout(() => {
+                    document.querySelector('.input').value = msg;
+                }, 0);
+                setTimeout(() => {
+                    document.querySelector('.input').value = string;
+                }, 1000);
+            }
         }
         else if (e.target.innerHTML == "C") {
             string = "";
@@ -24,6 +37,24 @@ Array.from(buttons).forEach((button) => {
             setTimeout(() => {
                 document.querySelector('.input').value = string;
             }, 1000);
+        }
+        else if(e.target.innerHTML == "del")
+        {
+            if(string.length != 0)
+            {
+                string = string.substring(0, string.length - 1);
+                document.querySelector('.input').value = string;
+            }
+            else
+            {
+                setTimeout(() => {
+                    let msg = "                 Empty!";
+                document.querySelector('.input').value = msg;
+                }, 0);
+                setTimeout(() => {
+                    document.querySelector(".input").value = string;
+                }, 1000);
+            }
         }
         else {
             // console.log(e.target);
